@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Background and Stylish Font</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: var(--bg-color);
+            font-family: cursive;
+            font-size: 40px;
+            color: white;
+        }
+
+        .loading-icon {
+            margin-top: 10px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                font-size: 30px;
+            }
+
+            .under-development {
+                font-size: 12px !important;
+            }
+        }
+    </style>
+    <script>
+        function changeBackgroundColor() {
+            var randomColor = getRandomBlackColor();
+            document.documentElement.style.setProperty('--bg-color', randomColor);
+        }
+
+        function getRandomBlackColor() {
+            var randomValue = Math.floor(Math.random() * 50); // Generate a random value between 0 and 50
+            var hexValue = (randomValue * 5).toString(16); // Convert the value to hexadecimal
+            var color = '#' + hexValue + hexValue + hexValue; // Create a grayscale color by repeating the hexadecimal value
+            return color;
+        }
+
+        setInterval(changeBackgroundColor, 2000); // Change background color every 2 seconds
+    </script>
+</head>
+<body>
+    <!-- <p>sabharees</p> -->
+    <div class="loading-icon"></div>
+    <p class="under-development">Site is Under Development</p>
+</body>
+</html>
